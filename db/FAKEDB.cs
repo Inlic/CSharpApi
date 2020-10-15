@@ -6,7 +6,8 @@ namespace CSharpApi.db
   public class FAKEDB
   {
     public static List<Cat> Cats { get; set; } = new List<Cat>(){
-      new Cat("Chonkers", "He's Chunky")
+      new Cat("Chonkers", "He's Chunky"),
+      new Cat("Sir Kitty Purrington", "He's a Wizard")
     };
   }
 }

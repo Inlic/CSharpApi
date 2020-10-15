@@ -25,5 +25,30 @@ namespace CSharpApi.Services
       }
       throw new System.Exception("No such cat ere hoss, best you mosey along.");
     }
+
+    public object Update(Cat update, string id)
+    {
+      Cat foundCat = FAKEDB.Cats.Find(c => c.Id == id);
+      if (foundCat != null)
+      {
+        FAKEDB.Cats.Remove(foundCat);
+        foundCat.Name = update.Name == null ? foundCat.Name : update.Name;
+        foundCat.Description = update.Description == null ? foundCat.Description : update.Description;
+        FAKEDB.Cats.Add(foundCat);
+        return foundCat;
+      }
+      throw new System.Exception("No such cat ere hoss, best you mosey along.");
+    }
+
+    public object Remove(string id)
+    {
+      Cat foundCat = FAKEDB.Cats.Find(c => c.Id == id);
+      if (foundCat != null)
+      {
+        FAKEDB.Cats.Remove(foundCat);
+        return "Cat Removed";
+      }
+      throw new System.Exception("No such cat ere hoss, best you mosey along.");
+    }
   }
 }

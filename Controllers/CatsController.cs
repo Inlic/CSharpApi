@@ -33,5 +33,54 @@ namespace CSharpApi.Controllers
         return BadRequest(err.Message);
       }
     }
+    [HttpGet("{catId}")]
+    public ActionResult<Cat> GetById(string catId)
+    {
+      try
+      {
+        return Ok(_catService.GetCatById(catId));
+      }
+      catch (System.Exception err)
+      {
+        return BadRequest(err.Message);
+      }
+    }
+
+    [HttpPost]
+    public ActionResult<Cat> Create([FromBody] Cat newCat)
+    {
+      try
+      {
+        return Ok(_catService.Create(newCat));
+      }
+      catch (System.Exception err)
+      {
+        return BadRequest(err.Message);
+      }
+    }
+    [HttpPut("{catId}")]
+    public ActionResult<Cat> Update([FromBody] Cat update, string catId)
+    {
+      try
+      {
+        return Ok(_catService.Update(update, catId));
+      }
+      catch (System.Exception err)
+      {
+        return BadRequest(err.Message);
+      }
+    }
+    [HttpDelete("{catId}")]
+    public ActionResult<Cat> Remove(string catId)
+    {
+      try
+      {
+        return Ok(_catService.Remove(catId));
+      }
+      catch (System.Exception err)
+      {
+        return BadRequest(err.Message);
+      }
+    }
   }
 }
